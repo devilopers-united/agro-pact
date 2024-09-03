@@ -1,5 +1,6 @@
-import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  return <>hello</>;
+  // const session = useSession();
+  return <>{/* <div>{JSON.stringify(session.data?.user)}</div> */}</>;
 }
