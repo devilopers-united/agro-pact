@@ -54,7 +54,15 @@ export default function SignIn() {
             >
               Log In
             </button>
-            <hr className="my-5" />
+            <hr className="my-2" />
+            <button
+              type="button"
+              className="bg-black text-white py-2 rounded-lg hover:bg-slate-500 transition-all"
+              onClick={async () => await signIn("github")}
+            >
+              Sign In with Github
+            </button>
+
             <button
               type="submit"
               className="bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-all"

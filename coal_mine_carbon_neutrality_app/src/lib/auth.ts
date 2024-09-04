@@ -1,5 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "./prisma";
+import GithubProvider from "next-auth/providers/github";
+// import bcrypt from "bcryptjs";
 
 export const NEXT_AUTH = {
   providers: [
@@ -19,6 +21,10 @@ export const NEXT_AUTH = {
 
         throw new Error("Invalid credentials");
       },
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID || "",
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
