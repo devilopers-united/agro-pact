@@ -1,47 +1,29 @@
-<<<<<<< HEAD
-=======
+
 import type { Config } from "tailwindcss";
 const colors = require("tailwindcss/colors");
->>>>>>> 10e49a7e8b8a5ec1189348984eb3765eac20bd8d
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-<<<<<<< HEAD
 /** @type {import('tailwindcss').Config} */
-import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-=======
-const config: Config = {
-  darkMode: ["class"],
-  content: [
-    "./src/pages//*.{js,ts,jsx,tsx,mdx}",
-    "./src/components//*.{js,ts,jsx,tsx,mdx}",
-    "./src/app//*.{js,ts,jsx,tsx,mdx}",
-    "./pages//*.{ts,tsx}",
-    "./components//*.{ts,tsx}",
-    "./app//*.{ts,tsx}",
-    "./data//*.{ts,tsx}",
->>>>>>> 10e49a7e8b8a5ec1189348984eb3765eac20bd8d
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./data/**/*.{ts,tsx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-<<<<<<< HEAD
-      },
-    },
-  },
-  plugins: [addVariablesForColors],
-=======
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -197,7 +179,6 @@ const config: Config = {
     },
   },
   plugins: [require("tailwindcss-animate"), addVariablesForColors],
->>>>>>> 10e49a7e8b8a5ec1189348984eb3765eac20bd8d
 };
 
 function addVariablesForColors({ addBase, theme }:any) {
