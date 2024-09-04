@@ -1,5 +1,6 @@
-## Problem Statement: 
-# A web application specifically designed for Indian coal mines to quantify their carbon footprint and explore pathways to carbon neutrality.
+## Problem Statement
+
+# A web application specifically designed for Indian coal mines to quantify their carbon footprint and explore pathways to carbon neutrality
 
 ---
 name: Feature Request
@@ -17,6 +18,7 @@ A clear and concise description of what the problem is.
 What solution do you propose? How could we solve the problem?
 
 **Acceptance Criteria**
+
 - [ ] Condition 1
 - [ ] Condition 2
 - [ ] ...
