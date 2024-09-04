@@ -26,34 +26,42 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="flex align-middle gap-28">
-          <div>
-            <div className="text-5xl">Signin</div>
-            <div className="m-10">
-              {" "}
-              New user ?
-              <div>
-                <button onClick={() => router.push("/signup")}>Signup</button>
-              </div>
-            </div>
-          </div>
-          <form onSubmit={handleSignIn}>
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 gap-60">
+        {/* <div className="mb-56">
+          <div>Website Name</div>
+
+          <div>mini description of website</div>
+        </div> */}
+        <div className="bg-white shadow-lg rounded-2xl p-10 flex items-center gap-16">
+          <form onSubmit={handleSignIn} className="flex flex-col gap-6">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
-              className="text-black"
+              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
-              className="text-black"
+              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
-            <button type="submit">Sign In</button>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-all"
+            >
+              Log In
+            </button>
+            <hr className="my-5" />
+            <button
+              type="submit"
+              className="bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-all"
+              onClick={() => router.push("/signup")}
+            >
+              Create New account
+            </button>
           </form>
         </div>
       </div>
