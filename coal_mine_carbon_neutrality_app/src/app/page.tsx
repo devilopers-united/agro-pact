@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import Hero from "@/components/Hero";
 import { useSession } from "next-auth/react";
+import Footer from "@/components/Footer";
 
 
 export default function Home() {
@@ -18,8 +19,9 @@ export default function Home() {
   // const session = useSession();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 relative justify-center overflow-hidden sm:px-10">
+    <main className="flex min-h-screen flex-col items-center py-8 px-24 relative justify-between overflow-hidden sm:px-10">
       <Hero />
+      <Footer />
       {/* <div>{JSON.stringify(session.data?.user)}</div> */}
     </main>
   );
