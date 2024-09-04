@@ -7,13 +7,13 @@ const {
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./src/pages//*.{js,ts,jsx,tsx,mdx}",
-    "./src/components//*.{js,ts,jsx,tsx,mdx}",
-    "./src/app//*.{js,ts,jsx,tsx,mdx}",
-    "./pages//*.{ts,tsx}",
-    "./components//*.{ts,tsx}",
-    "./app//*.{ts,tsx}",
-    "./data//*.{ts,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./data/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -186,7 +186,7 @@ const config: Config = {
   plugins: [require("tailwindcss-animate"), addVariablesForColors],
 };
 
-function addVariablesForColors({ addBase, theme }:any) {
+function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
