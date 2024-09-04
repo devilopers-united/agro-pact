@@ -1,3 +1,4 @@
+
 "use client"
 import { useEffect } from "react";
 import LocomotiveScroll from "locomotive-scroll";
@@ -17,10 +18,12 @@ export default function Home() {
 
   // const session = useSession();
 
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 relative justify-center overflow-hidden sm:px-10">
       <Hero />
       {/* <div>{JSON.stringify(session.data?.user)}</div> */}
     </main>
+
   );
 }
