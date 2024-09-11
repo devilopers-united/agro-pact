@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-green-700 text-white p-4 shadow-md w-full">
+    <nav className="bg-slate-700 text-white p-4 shadow-md w-full">
       <div className="flex justify-between items-center w-full">
         <div className="flex items-center space-x-2">
           <Link href="/" className="text-2xl font-bold">
@@ -24,17 +24,22 @@ const Navbar = () => {
           <Link href="/" className="hover:text-gray-300">
             Home
           </Link>
-          <Link href="/dashboard/buyer" className="hover:text-gray-300">
-            Buyer
+          <Link href="/about" className="hover:text-gray-300">
+            About Us
           </Link>
-          <Link href="/dashboard/farmer" className="hover:text-gray-300">
-            Farmer
+          <Link href="/features" className="hover:text-gray-300">
+            Features
           </Link>
+
           {session ? (
             <>
-              <Link href="/dashboard" className="hover:text-gray-300">
-                Dashboard
+              {/* <Link href="/dashboard/buyer" className="hover:text-gray-300">
+                Buyer
               </Link>
+              <Link href="/dashboard/farmer" className="hover:text-gray-300">
+                Farmer
+              </Link> */}
+
               <button onClick={() => signOut()} className="hover:text-gray-300">
                 Logout
               </button>
@@ -63,11 +68,15 @@ const Navbar = () => {
           <Link href="/features" className="hover:text-gray-300">
             Features
           </Link>
+
           {session ? (
             <>
-              <Link href="/dashboard" className="hover:text-gray-300">
-                Dashboard
+              {/* <Link href="/dashboard/buyer" className="hover:text-gray-300">
+                Buyer
               </Link>
+              <Link href="/dashboard/farmer" className="hover:text-gray-300">
+                Farmer
+              </Link> */}
               <button onClick={() => signOut()} className="hover:text-gray-300">
                 Logout
               </button>
