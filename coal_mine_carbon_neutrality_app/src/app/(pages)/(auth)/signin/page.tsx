@@ -26,7 +26,7 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100 gap-60">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 gap-60 text-black-100">
         {/* <div className="mb-56">
           <div>Website Name</div>
 
