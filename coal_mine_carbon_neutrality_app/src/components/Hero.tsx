@@ -18,7 +18,15 @@ const Hero = () => {
   };
   return (
     <div>
-      <Typewriter />
+      <div>
+        <h1 className="text-5xl text-green-400 font-mono font-bold   ">
+          AgriBAZAAR
+        </h1>
+      </div>
+      <div>
+        <Typewriter />
+      </div>
+      <div></div>
     </div>
   );
 };

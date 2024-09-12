@@ -4,10 +4,17 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 
 export function Typewriter() {
   const words = [
-    { text: "Decentralized" },
-    { text: "Farmers" },
-    { text: "marketplace" },
-    { text: "AgriBazar.", className: "text-green-500 dark:text-blue-500" },
+    //  for Stable Market Access
+    { text: "A" },
+    { text: "Contract" },
+    { text: "Farming" },
+    { text: "System" },
+    { text: "For" },
+    { text: "Stable" },
+    { text: "Market" },
+    { text: "Access ." },
+
+    // { text: "AgriBazar.", className: "text-green-500 dark:text-blue-500" },
   ];
 
   const [restart, setRestart] = useState(false);
@@ -21,7 +28,7 @@ export function Typewriter() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-[40rem]">
+    <div className="absolute flex flex-col items-center justify-center h-[40rem]">
       <TypewriterEffectSmooth
         words={words}
         key={restart ? "restart" : "initial"}
