@@ -47,7 +47,7 @@ export default function ContractForm() {
   };
 
   return (
-    <Card className="max-w-lg mx-auto py-10">
+    <Card className="max-w-lg mx-auto py-10 bg-white">
       <CardHeader>
         <CardTitle>Create a New Contract</CardTitle>
       </CardHeader>
@@ -62,6 +62,7 @@ export default function ContractForm() {
               onChange={(e) => setWalletAddress(e.target.value)}
               required
               placeholder="Enter your Ethereum wallet address"
+              className="rounded-2xl"
             />
           </div>
 
@@ -74,6 +75,7 @@ export default function ContractForm() {
               onChange={(e) => setCropType(e.target.value)}
               required
               placeholder="Enter crop type"
+              className="rounded-2xl"
             />
           </div>
 
@@ -86,6 +88,7 @@ export default function ContractForm() {
               onChange={(e) => setQuantity(e.target.value)}
               required
               placeholder="Enter quantity in kg"
+              className="rounded-2xl"
             />
           </div>
 
@@ -97,10 +100,11 @@ export default function ContractForm() {
               value={deadline}
               onChange={(e) => setDeadline(e.target.value)}
               required
+              className="rounded-2xl"
             />
           </div>
           <CardFooter>
-            <Button type="submit" className="w-full bg-white text-black">
+            <Button type="submit" className="w-full bg-teal-200 text-black hover:bg-black hover:text-white rounded-2xl">
               Create Contract
             </Button>
           </CardFooter>
