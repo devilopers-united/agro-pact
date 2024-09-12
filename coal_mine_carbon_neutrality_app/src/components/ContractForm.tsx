@@ -1,96 +1,111 @@
 "use client";
 
-const ContractForm = () => {
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+
+export default function ContractForm() {
+  const [walletAddress, setWalletAddress] = useState("");
+  const [cropType, setCropType] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const contractData = {
+      walletAddress,
+      cropType,
+      quantity: parseFloat(quantity),
+      deadline,
+    };
+
+    const res = await fetch("/api/contracts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(contractData),
+    });
+
+    if (res.ok) {
+      alert("Contract created successfully!");
+      router.push("/contracts");
+    } else {
+      alert("Failed to create contract");
+    }
+  };
+
   return (
-    <form className="space-y-4 p-4 bg-white-100 rounded-lg">
-      <div>
-        <label
-          htmlFor="cropType"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Crop Type
-        </label>
-        <input
-          type="text"
-          id="cropType"
-          name="cropType"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-          required
-        />
-      </div>
+    <Card className="max-w-lg mx-auto py-10">
+      <CardHeader>
+        <CardTitle>Create a New Contract</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Label htmlFor="walletAddress">ETH Wallet Address</Label>
+            <Input
+              id="walletAddress"
+              type="text"
+              value={walletAddress}
+              onChange={(e) => setWalletAddress(e.target.value)}
+              required
+              placeholder="Enter your Ethereum wallet address"
+            />
+          </div>
 
-      <div>
-        <label
-          htmlFor="quantity"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Quantity
-        </label>
-        <input
-          type="number"
-          id="quantity"
-          name="quantity"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-          required
-        />
-      </div>
+          <div>
+            <Label htmlFor="cropType">Crop Type</Label>
+            <Input
+              id="cropType"
+              type="text"
+              value={cropType}
+              onChange={(e) => setCropType(e.target.value)}
+              required
+              placeholder="Enter crop type"
+            />
+          </div>
 
-      <div>
-        <label
-          htmlFor="pricePerUnit"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Price per Unit
-        </label>
-        <input
-          type="number"
-          id="pricePerUnit"
-          name="pricePerUnit"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-          required
-        />
-      </div>
+          <div>
+            <Label htmlFor="quantity">Quantity (in kg)</Label>
+            <Input
+              id="quantity"
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              required
+              placeholder="Enter quantity in kg"
+            />
+          </div>
 
-      <div>
-        <label
-          htmlFor="deliveryDeadline"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Delivery Deadline
-        </label>
-        <input
-          type="date"
-          id="deliveryDeadline"
-          name="deliveryDeadline"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-          required
-        />
-      </div>
-
-      <div>
-        <label
-          htmlFor="paymentTerms"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Payment Terms
-        </label>
-        <input
-          type="text"
-          id="paymentTerms"
-          name="paymentTerms"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-          required
-        />
-      </div>
-
-      <button
-        type="submit"
-        className="inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-      >
-        Create Contract
-      </button>
-    </form>
+          <div>
+            <Label htmlFor="deadline">Delivery Deadline</Label>
+            <Input
+              id="deadline"
+              type="date"
+              value={deadline}
+              onChange={(e) => setDeadline(e.target.value)}
+              required
+            />
+          </div>
+          <CardFooter>
+            <Button type="submit" className="w-full bg-white text-black">
+              Create Contract
+            </Button>
+          </CardFooter>
+        </form>
+      </CardContent>
+    </Card>
   );
-};
-
-export default ContractForm;
+}

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "../components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Navbar() {
   return (
@@ -18,9 +20,26 @@ function Nav({ className }: { className?: string }) {
 
   return (
     <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
+      className={cn(
+        "fixed top-10 inset-x-0 max-w-2xl mx-auto z-50 ",
+        className
+      )}
     >
+      <Link href="/">
+        <Image
+          src="/logo.png" // Update with your logo path
+          width={50} // Adjust width
+          height={50} // Adjust height
+          alt="Logo"
+        />
+      </Link>
       <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Contract">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/createContract">Create a Contract</HoveredLink>
+            <HoveredLink href="/liveContracts">Sign a Contract</HoveredLink>
+          </div>
+        </MenuItem>
         <MenuItem setActive={setActive} active={active} item="About">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink href="/objective">Our Goal</HoveredLink>
@@ -29,6 +48,7 @@ function Nav({ className }: { className?: string }) {
             <HoveredLink href="/support">Customer Support</HoveredLink>
           </div>
         </MenuItem>
+
         {session ? (
           <>
             <MenuItem setActive={setActive} active={active} item="Dashboard">
