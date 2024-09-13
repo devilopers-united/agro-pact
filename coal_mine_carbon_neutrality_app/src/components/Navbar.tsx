@@ -27,12 +27,17 @@ function Nav({ className }: { className?: string }) {
     >
       <Menu setActive={setActive}>
         <div className="grid grid-cols-3 w-full">
-
           <Link href={"/"} className="flex gap-2 items-center justify-start">
-            <Image src="../phasalCombinatorLogo2.svg" alt="Phasal Combinator Logo" className="overflow-hidden" width={24} height={24} priority />
+            <Image
+              src="../phasalCombinatorLogo2.svg"
+              alt="Phasal Combinator Logo"
+              className="overflow-hidden"
+              width={24}
+              height={24}
+              priority
+            />
             <p className="font-bold tracking-tight">Phasal Combinator</p>
           </Link>
-
 
           <div className="flex items-center gap-4 justify-center">
             <MenuItem setActive={setActive} active={active} item="What we do?">
@@ -45,21 +50,32 @@ function Nav({ className }: { className?: string }) {
             </MenuItem>
             <MenuItem setActive={setActive} active={active} item="Contract">
               <div className="flex flex-col space-y-4 text-sm">
-                <HoveredLink href="/createContract">Create a Contract</HoveredLink>
+                <HoveredLink href="/createContract">
+                  Create a Contract
+                </HoveredLink>
                 <HoveredLink href="/liveContracts">Sign a Contract</HoveredLink>
               </div>
             </MenuItem>
           </div>
 
-
           <div className="flex justify-end">
             <div className="py-2 px-3 rounded-xl bg-[#ffc744] hover:*:text-white hover:bg-[#f0ac0e] transition-all ease-in-out duration-300">
-              <MenuItem setActive={setActive} active={active} item="Login / Signup">
-                <div className="flex flex-col space-y-4 text-sm">
-                  <HoveredLink href="/signin">Login</HoveredLink>
-                  <HoveredLink href="/signup">Sign Up</HoveredLink>
+              {session ? (
+                <div className="flex items-center gap-4">
+                  <HoveredLink onClick={() => signOut()}>Logout</HoveredLink>
                 </div>
-              </MenuItem>
+              ) : (
+                <MenuItem
+                  setActive={setActive}
+                  active={active}
+                  item="Login / Signup"
+                >
+                  <div className="flex flex-col space-y-4 text-sm">
+                    <HoveredLink href="/signin">Login</HoveredLink>
+                    <HoveredLink href="/signup">Sign Up</HoveredLink>
+                  </div>
+                </MenuItem>
+              )}
             </div>
           </div>
         </div>

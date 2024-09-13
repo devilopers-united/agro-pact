@@ -28,7 +28,7 @@ export default function SignupPage() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center min-h-screen bg-gray-100 text-black-100">
         <div className="bg-white shadow-lg rounded-2xl p-10 flex items-center gap-16">
           <div>
             <div className="text-5xl font-bold text-gray-800 mb-4">Sign Up</div>
