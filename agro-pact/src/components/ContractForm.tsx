@@ -1,115 +1,103 @@
 "use client";
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
 
-export default function ContractForm() {
-  const [walletAddress, setWalletAddress] = useState("");
-  const [cropType, setCropType] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const router = useRouter();
+const ContractForm = () => {
+  const [formData, setFormData] = useState({
+    walletAddress: "",
+    cropType: "",
+    quantity: "",
+    deadline: "",
+    pricePerKg: "",
+    phoneNumber: "", // Ensure this field is included
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const contractData = {
-      walletAddress,
-      cropType,
-      quantity: parseFloat(quantity),
-      deadline,
+    // Convert quantity and pricePerKg to numbers
+    const dataToSend = {
+      ...formData,
+      quantity: parseInt(formData.quantity, 10),
+      pricePerKg: parseFloat(formData.pricePerKg),
     };
 
-    const res = await fetch("/api/contracts", {
+    const response = await fetch("/api/contracts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(contractData),
+      body: JSON.stringify(dataToSend),
     });
 
-    if (res.ok) {
-      alert("Contract created successfully!");
-      router.push("/contracts");
+    if (response.ok) {
+      const result = await response.json();
+      console.log("Contract created successfully:", result);
     } else {
-      alert("Failed to create contract");
+      const errorResult = await response.json();
+      console.error("Failed to create contract:", errorResult);
     }
   };
 
   return (
-    <Card className="max-w-lg mx-auto py-10 bg-white">
-      <CardHeader>
-        <CardTitle>Create a New Contract</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <Label htmlFor="walletAddress">ETH Wallet Address</Label>
-            <Input
-              id="walletAddress"
-              type="text"
-              value={walletAddress}
-              onChange={(e) => setWalletAddress(e.target.value)}
-              required
-              placeholder="Enter your Ethereum wallet address"
-              className="rounded-2xl"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="cropType">Crop Type</Label>
-            <Input
-              id="cropType"
-              type="text"
-              value={cropType}
-              onChange={(e) => setCropType(e.target.value)}
-              required
-              placeholder="Enter crop type"
-              className="rounded-2xl"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="quantity">Quantity (in kg)</Label>
-            <Input
-              id="quantity"
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              required
-              placeholder="Enter quantity in kg"
-              className="rounded-2xl"
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="deadline">Delivery Deadline</Label>
-            <Input
-              id="deadline"
-              type="date"
-              value={deadline}
-              onChange={(e) => setDeadline(e.target.value)}
-              required
-              className="rounded-2xl"
-            />
-          </div>
-          <CardFooter>
-            <Button type="submit" className="w-full bg-teal-200 text-black hover:bg-black hover:text-white rounded-2xl">
-              Create Contract
-            </Button>
-          </CardFooter>
-        </form>
-      </CardContent>
-    </Card>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="walletAddress"
+        value={formData.walletAddress}
+        onChange={handleChange}
+        placeholder="Wallet Address"
+        required
+      />
+      <input
+        type="text"
+        name="cropType"
+        value={formData.cropType}
+        onChange={handleChange}
+        placeholder="Crop Type"
+        required
+      />
+      <input
+        type="number"
+        name="quantity"
+        value={formData.quantity}
+        onChange={handleChange}
+        placeholder="Quantity"
+        required
+      />
+      <input
+        type="date"
+        name="deadline"
+        value={formData.deadline}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="number"
+        step="0.01"
+        name="pricePerKg"
+        value={formData.pricePerKg}
+        onChange={handleChange}
+        placeholder="Price per Kg"
+        required
+      />
+      <input
+        type="text"
+        name="phoneNumber"
+        value={formData.phoneNumber}
+        onChange={handleChange}
+        placeholder="Phone Number"
+        required
+      />
+      <button type="submit">Create Contract</button>
+    </form>
   );
-}
+};
+
+export default ContractForm;
