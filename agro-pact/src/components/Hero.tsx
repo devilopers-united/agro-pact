@@ -1,4 +1,3 @@
-"use client"
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -10,7 +9,6 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 const Hero = () => {
   const { data: session } = useSession();
   const router = useRouter();
-
   const handleNavigation = (path: string) => {
     if (session) {
       router.push(path);
@@ -22,6 +20,7 @@ const Hero = () => {
   return (
     <>
       <ClientNavbar />
+      {session ? <Dashboard /> : null}
       {!session && (
         <section className="bg-[#0c5934] border-8 border-[#5ee4a396] h-auto pb-6 min-w-full mt-6 px-8 md:px-20 pt-20 text-white rounded-3xl z-10">
           <div className="flex items-center justify-start gap-1 pl-2">
