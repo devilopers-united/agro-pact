@@ -18,7 +18,6 @@ export const NEXT_AUTH: NextAuthOptions = {
           password: credentials?.password,
         });
 
-        // Hardcoded admin credentials
         if (
           credentials?.email === "admin@gmail.com" &&
           credentials?.password === "admin"
@@ -63,22 +62,22 @@ export const NEXT_AUTH: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   session: {
-    strategy: "jwt", // Default, but explicitly set
-    maxAge: 30 * 24 * 60 * 60, // 30 days in seconds
-    updateAge: 24 * 60 * 60, // Update session every 24 hours
+    strategy: "jwt", 
+    maxAge: 30 * 24 * 60 * 60, 
+    updateAge: 24 * 60 * 60, 
   },
   jwt: {
-    maxAge: 30 * 24 * 60 * 60, // 30 days
+    maxAge: 30 * 24 * 60 * 60, 
   },
   cookies: {
     sessionToken: {
       name: `next-auth.session-token`,
       options: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // Secure in production
+        secure: process.env.NODE_ENV === "production", 
         sameSite: "lax",
         path: "/",
-        maxAge: 30 * 24 * 60 * 60, // 30 days
+        maxAge: 30 * 24 * 60 * 60, 
       },
     },
   },
@@ -87,19 +86,19 @@ export const NEXT_AUTH: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      console.log("JWT callback:", { token, user }); // Debug log
+      console.log("JWT callback:", { token, user }); 
       if (user) {
         token.uid = user.id;
       }
       return token;
     },
     async session({ session, token }) {
-      console.log("Session callback:", { session, token }); // Debug log
+      console.log("Session callback:", { session, token }); 
       if (session.user) {
         session.user.id = token.uid as string;
       }
       return session;
     },
   },
-  debug: process.env.NODE_ENV === "development", // Enable debug logs in dev
+  debug: process.env.NODE_ENV === "development", 
 };

@@ -3,10 +3,7 @@ import { ReactLenis } from "@studio-freight/react-lenis";
 import Image from "next/image";
 import DashboardScreenDemo from "./DashboardScreenDemo";
 
-const fadeInVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5 } },
-};
+
 
 const SECTION_HEIGHT = 200;
 
@@ -72,7 +69,6 @@ const NewHero = () => {
           root
           options={{
             lerp: 0.05,
-            //   infinite: true,
             syncTouch: true,
           }}
         >
