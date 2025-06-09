@@ -2,11 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
-
-export default function ClientNavbar() {
+const NavBarClient = () => {
   const pathname = usePathname();
 
   const shouldShowNavbar = !["/signup", "/signin"].includes(pathname);
 
   return shouldShowNavbar ? <Navbar /> : null;
-}
+};
+
+export default NavBarClient;

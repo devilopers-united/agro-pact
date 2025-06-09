@@ -1,11 +1,10 @@
 "use client";
-import ClientNavbar from "@/components/ClientNav";
+import NavBarClient from "@/components/NavBarClient";
 import ContractList from "@/components/ContractList";
 import Dashboard from "@/components/Dashboard";
 import { FaqAccordian } from "@/components/FaqAccordian";
 import FeaturesBento from "@/components/FeaturesBento";
 import Footer from "@/components/Footer";
-import NewFooter from "@/components/NewFooter";
 import NewHero from "@/components/NewHero";
 import Services from "@/components/Services";
 import { useSession } from "next-auth/react";
@@ -24,7 +23,7 @@ export default function Home() {
 
           {/* Main content area */}
           <div className="flex-1">
-            <ClientNavbar />
+            <NavBarClient />
             <div className="p-4">
               <ContractList />
             </div>
@@ -32,14 +31,13 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <ClientNavbar />
+          <NavBarClient />
           <NewHero />
           <div className="px-4 md:px-24 sm:px-10">
             <FeaturesBento />
             <Services />
             <FaqAccordian />
-            {/* <Footer /> */}
-            <NewFooter />
+            <Footer />
           </div>
         </>
       )}
