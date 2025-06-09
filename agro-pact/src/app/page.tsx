@@ -1,5 +1,5 @@
 "use client";
-import NavBarClient from "@/components/NavBarClient";
+import NavClient from "@/components/NavClient";
 import ContractList from "@/components/ContractList";
 import Dashboard from "@/components/Dashboard";
 import { FaqAccordian } from "@/components/FaqAccordian";
@@ -23,7 +23,7 @@ export default function Home() {
 
           {/* Main content area */}
           <div className="flex-1">
-            <NavBarClient />
+            <NavClient />
             <div className="p-4">
               <ContractList />
             </div>
@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <NavBarClient />
+          <NavClient />
           <NewHero />
           <div className="px-4 md:px-24 sm:px-10">
             <FeaturesBento />
