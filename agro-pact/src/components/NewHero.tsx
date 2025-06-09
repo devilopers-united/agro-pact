@@ -1,4 +1,4 @@
-import NavBarClient from "./NavBarClient";
+import NavClient from "./NavClient";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import Image from "next/image";
 import DashboardScreenDemo from "./DashboardScreenDemo";
@@ -66,7 +66,7 @@ const Hero = () => {
 const NewHero = () => {
   return (
     <>
-      <NavBarClient />
+      <NavClient />
       <div className="bg-[#e4efe6]">
         <ReactLenis
           root
