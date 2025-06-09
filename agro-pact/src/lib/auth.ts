@@ -60,7 +60,7 @@ export const NEXT_AUTH: NextAuthOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXT_AUTH_SECRET,
   session: {
     strategy: "jwt", 
     maxAge: 30 * 24 * 60 * 60, 
